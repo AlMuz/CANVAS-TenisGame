@@ -39,19 +39,26 @@
       function draw() {
 
         // background
-        drawElement(0, 0, canvas.width, canvas.height, 'black');
+        drawRectElement(0, 0, canvas.width, canvas.height, 'black');
 
         // paddle
-        drawElement(0, 210, 10, 100, 'white');
+        drawRectElement(0, 210, 10, 100, 'white');
 
         // ball
-        drawElement(ballX, 100, 10, 10, 'red');
+        drawCircleElement(ballX, 100, 10, 'red');
       }
 
-      function drawElement(leftX, topY, width, height, drawColor) {
-        
+      function drawRectElement(leftX, topY, width, height, drawColor) {
+
         canvasContext.fillStyle = drawColor;
         canvasContext.fillRect(leftX, topY, width, height);
+      }
+
+      function drawCircleElement(centerX, centerY, radius, drawColor) {
+        canvasContext.fillStyle = drawColor;
+        canvasContext.beginPath();
+        canvasContext.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
+        canvasContext.fill();
       }
 
     </script>
