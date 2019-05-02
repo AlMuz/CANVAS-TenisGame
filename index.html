@@ -10,16 +10,23 @@
     <script type="text/javascript">
       var canvas;
       var canvasContext;
+      var ballX = 50;
 
       window.onload = function() {
         canvas = document.getElementById('gameCanvas');
         canvasContext = canvas.getContext('2d');
 
+        setInterval(draw, 1000);
+      }
+
+      function draw() {
+
         canvasContext.fillStyle = 'black';
         canvasContext.fillRect(0, 0, canvas.width, canvas.height);
 
         canvasContext.fillStyle = 'red';
-        canvasContext.fillRect(100, 200, 50, 50);
+        canvasContext.fillRect(ballX, 200, 50, 50);
+        ballX += 20;
       }
 
     </script>
