@@ -5,6 +5,9 @@ var ballY = 50;
 var ballSpeedX = 10;
 var ballSpeedY = 4;
 
+var player1Score = 0;
+var player2Score = 0;
+
 var paddle1Y = 250;
 var paddle2Y = 250;
 
@@ -71,6 +74,7 @@ function move() {
       ballSpeedX = -ballSpeedX;
     }else {
       ballReset();
+      player2Score++;
     }
   }
   if (ballX > canvas.width) {
@@ -78,6 +82,7 @@ function move() {
       ballSpeedX = -ballSpeedX;
     }else {
       ballReset();
+      player1Score++;
     };
   }
 
@@ -102,6 +107,9 @@ function draw() {
 
   // ball
   drawCircleElement(ballX, ballY, 10, 'red');
+
+  canvasContext.fillText(player1Score, 100, 100);
+  canvasContext.fillText(player2Score, canvas.width - 100, 100);
 }
 
 function drawRectElement(leftX, topY, width, height, drawColor) {
