@@ -15,6 +15,7 @@ const paddleThickness = 10;
 const paddleHeight = 100;
 
 window.onload = () => {
+
   canvas = document.getElementById('gameCanvas');
   canvasContext = canvas.getContext('2d');
 
@@ -72,6 +73,9 @@ function move() {
   if (ballX < 0) {
     if (ballY > paddle1Y && ballY < paddle1Y + paddleHeight) {
       ballSpeedX = -ballSpeedX;
+
+      var deltaY = ballY - (paddle1Y+paddleHeight/2);
+      ballSpeedY = deltaY * 0.35;
     }else {
       ballReset();
       player2Score++;
@@ -80,6 +84,9 @@ function move() {
   if (ballX > canvas.width) {
     if (ballY > paddle2Y && ballY < paddle2Y + paddleHeight) {
       ballSpeedX = -ballSpeedX;
+
+      var deltaY = ballY - (paddle2Y+paddleHeight/2);
+      ballSpeedY = deltaY * 0.35;
     }else {
       ballReset();
       player1Score++;
