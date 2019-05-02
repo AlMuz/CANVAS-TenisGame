@@ -36,24 +36,38 @@ function calculateMousePosition(evt) {
   }
 }
 
+function ballReset() {
+
+  // changing direction
+  ballSpeedX = -ballSpeedX;
+
+  // resets ball
+  ballX = canvas.width / 2;
+  ballY = canvas.height / 2;
+}
+
 function move() {
 
-    ballX = ballX + ballSpeedX;
-    ballY = ballY + ballSpeedY;
+  ballX = ballX + ballSpeedX;
+  ballY = ballY + ballSpeedY;
 
-    if (ballX < 0) {
+  if (ballX < 0) {
+    if (ballY > paddle1Y && ballY < paddle1Y + paddleHeight) {
       ballSpeedX = -ballSpeedX;
+    }else {
+      ballReset();
     }
-    if (ballX > canvas.width) {
-      ballSpeedX = -ballSpeedX;
-    }
+  }
+  if (ballX > canvas.width) {
+    ballSpeedX = -ballSpeedX;
+  }
 
-    if (ballY < 0) {
-      ballSpeedY = -ballSpeedY;
-    }
-    if (ballY > canvas.height) {
-      ballSpeedY = -ballSpeedY;
-    }
+  if (ballY < 0) {
+    ballSpeedY = -ballSpeedY;
+  }
+  if (ballY > canvas.height) {
+    ballSpeedY = -ballSpeedY;
+  }
 }
 
 function draw() {
@@ -75,6 +89,7 @@ function drawRectElement(leftX, topY, width, height, drawColor) {
 }
 
 function drawCircleElement(centerX, centerY, radius, drawColor) {
+
   canvasContext.fillStyle = drawColor;
   canvasContext.beginPath();
   canvasContext.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
