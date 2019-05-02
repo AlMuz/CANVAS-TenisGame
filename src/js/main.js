@@ -36,6 +36,12 @@ window.onload = () => {
   });
 }
 
+function drawNet() {
+    for (var i = 0; i < canvas.height; i += 40) {
+      drawRectElement(canvas.width/2-1, i, 2, 20, 'white');
+    }
+}
+
 function handleMouseClick(evt) {
 
   if (showingWinScreen) {
@@ -140,6 +146,8 @@ function draw() {
     canvasContext.fillText('Click to continue', (canvas.width / 2) - 20, canvas.height / 2);
     return;
   }
+
+  drawNet();
 
   // paddle
   drawRectElement(0, paddle1Y, paddleThickness, paddleHeight, 'white');
