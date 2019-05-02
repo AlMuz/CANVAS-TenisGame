@@ -7,6 +7,7 @@ var ballSpeedY = 4;
 
 var player1Score = 0;
 var player2Score = 0;
+const winingScore = 3;
 
 var paddle1Y = 250;
 var paddle2Y = 250;
@@ -45,6 +46,12 @@ function calculateMousePosition(evt) {
 
 function ballReset() {
 
+  if (player1Score >= winingScore || player2Score >= winingScore) {
+
+    player1Score = 0;
+    player2Score = 0;
+  }
+
   // changing direction
   ballSpeedX = -ballSpeedX;
 
@@ -77,8 +84,8 @@ function move() {
       var deltaY = ballY - (paddle1Y+paddleHeight/2);
       ballSpeedY = deltaY * 0.35;
     }else {
-      ballReset();
       player2Score++;
+      ballReset();
     }
   }
   if (ballX > canvas.width) {
@@ -88,8 +95,8 @@ function move() {
       var deltaY = ballY - (paddle2Y+paddleHeight/2);
       ballSpeedY = deltaY * 0.35;
     }else {
-      ballReset();
       player1Score++;
+      ballReset();
     };
   }
 
