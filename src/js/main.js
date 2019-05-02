@@ -1,7 +1,9 @@
 var canvas;
 var canvasContext;
 var ballX = 50;
-var ballSpeedX = 5;
+var ballY = 50;
+var ballSpeedX = 10;
+var ballSpeedY = 4;
 
 window.onload = () => {
   canvas = document.getElementById('gameCanvas');
@@ -16,12 +18,21 @@ window.onload = () => {
 
 function move() {
 
-    ballX += ballSpeedX;
+    ballX = ballX + ballSpeedX;
+    ballY = ballY + ballSpeedY;
+
     if (ballX < 0) {
       ballSpeedX = -ballSpeedX;
     }
     if (ballX > canvas.width) {
       ballSpeedX = -ballSpeedX;
+    }
+
+    if (ballY < 0) {
+      ballSpeedY = -ballSpeedY;
+    }
+    if (ballY > canvas.height) {
+      ballSpeedY = -ballSpeedY;
     }
 }
 
@@ -34,7 +45,7 @@ function draw() {
   drawRectElement(0, 210, 10, 100, 'white');
 
   // ball
-  drawCircleElement(ballX, 100, 10, 'red');
+  drawCircleElement(ballX, ballY, 10, 'red');
 }
 
 function drawRectElement(leftX, topY, width, height, drawColor) {
