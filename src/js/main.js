@@ -6,6 +6,9 @@ var ballSpeedX = 10;
 var ballSpeedY = 4;
 
 var paddle1Y = 250;
+var paddle2Y = 250;
+
+const paddleThickness = 10;
 const paddleHeight = 100;
 
 window.onload = () => {
@@ -76,7 +79,10 @@ function draw() {
   drawRectElement(0, 0, canvas.width, canvas.height, 'black');
 
   // paddle
-  drawRectElement(0, paddle1Y, 10, paddleHeight, 'white');
+  drawRectElement(0, paddle1Y, paddleThickness, paddleHeight, 'white');
+
+  // PC paddle
+  drawRectElement(canvas.width - paddleThickness, paddle2Y, paddleThickness, paddleHeight, 'white');
 
   // ball
   drawCircleElement(ballX, ballY, 10, 'red');
